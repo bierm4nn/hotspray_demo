@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="hotspray_ur5_description">
+  
+  <!--  <xacro:include filename="$(find ur5_support)/urdf/ur5_macro.xacro"/> -->
+  <xacro:include filename="$(find ur_description)/urdf/ur5_joint_limited_robot.urdf.xacro"/>
+  <xacro:include filename="$(find hotspray_ur5_description)/urdf/hotspray_tool.urdf.xacro"/>
+  <xacro:include filename="$(find hotspray_ur5_description)/urdf/ur5_table.urdf.xacro"/>
+
+  <xacro:property name="prefix" value=""/>
+  
+
+  <!-- robot -->
+  <link name="world_frame"/>
+  
+  <joint name="world_to_baselink" type="fixed">
+    <parent link="world_frame"/>
+    <child link="base_link"/>
+    <origin  xyz="0 0 0.05" rpy="0 0 0" />
+  </joint>
+  
+  
+
+  <!-- robot 
+  <xacro:ur5_robot prefix="${prefix}"/> -->
+
+  <!-- table -->
+
+  <xacro:table parent="world_frame">
+    <origin  xyz="0 0 0.0" rpy="0 0 0" />
+  </xacro:table> 
+
+
+  <!-- tool  -->  
+  <xacro:hotspray_tool parent="${prefix}tool0" prefix="${prefix}">
+    <origin  xyz="0 0 0" rpy="0 0 ${3 * pi/4}" />
+  </xacro:hotspray_tool>
+  
+</robot>

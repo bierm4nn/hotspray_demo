@@ -1,0 +1,53 @@
+<?xml version="1.0" ?>
+
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+  <xacro:macro name="hotspray_extruder" params="parent *origin prefix:=${''} spray_distance:=${'10.0'}">
+
+
+    <link name="${prefix}hotspray_extruder">
+      <!-- TODO: inertia hotspray-->
+      <inertial>
+        <origin xyz="0 0 0.0" rpy="0 0 0" />
+        <mass value="0" />
+        <inertia ixx="0.00" ixy="0" ixz="0" iyy="0.00" iyz="0" izz="0.00" />
+      </inertial>
+      <visual>
+        <origin xyz="-0.04 -0.07 0.075" rpy="${-pi/2} ${-pi/2} ${pi/2}" />
+        <geometry>
+          <mesh filename="package://hotspray_ur5_description/meshes/hotspray_extruder_v2.stl" scale="0.001 0.001 0.001" />
+        </geometry>
+        <material name="">
+          <color rgba="0.8 0.8 0.9 1" />
+        </material>
+      </visual>
+      <collision>
+        <origin xyz="0.04 -0.06 0.06" rpy="${-pi/2} ${-pi/2} ${pi/2}" />
+        <geometry>
+          <box size="0.195 0.04 0.27"/>
+        </geometry>
+      </collision>
+    </link>
+
+    <!--joint between fixture and hotspray-->
+    <joint name="${prefix}hotspray_extruder_joint" type="fixed">
+      <xacro:insert_block name="origin"/>
+      <parent link="${parent}" />
+      <child link="${prefix}hotspray_extruder" />
+      <axis xyz="0 0 0" />
+    </joint>
+
+
+    <link name="${prefix}tcp_frame"/>
+    <joint name="${prefix}tip_joint" type="fixed">
+      <parent link="tool0"/>
+      <child link="tcp_frame"/>
+      <!-- Working point at middle of stroke -->
+        <!--origin xyz="-0.08 -0.06 0.35" rpy="0 0 ${-pi/2}"/-->
+        <origin xyz="-0.12 -0.03 0.16" rpy="0 0 0"/>
+
+
+    </joint>
+
+  </xacro:macro>
+</robot>
