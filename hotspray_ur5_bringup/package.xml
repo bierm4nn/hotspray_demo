@@ -2,7 +2,7 @@
 <package format="2">
   <name>hotspray_ur5_bringup</name>
   <version>0.0.0</version>
-  <description>The hotspray_ur_bringup package</description>
+  <description>The hotspray_ur5_bringup package</description>
 
   <maintainer email="harshavardhan.deshpande@ipa.fraunhofer.de">Harsh Deshpande</maintainer>
   <maintainer email="jonathan.hechtbauer@ipa.fraunhofer.de">Jonathan Hechtbauer</maintainer>
@@ -22,16 +22,15 @@
   <exec_depend>nodelet</exec_depend>
   <exec_depend>path_planning_plugins</exec_depend>
   <exec_depend>pcl_ros</exec_depend>
-  <exec_depend>pilz_modbus</exec_depend>
-  <exec_depend>pilz_sto_modbus_adapter</exec_depend>
   <exec_depend>position_controllers</exec_depend>
-  <exec_depend>ur5_moveit_config</exec_depend>
   <exec_depend>prbt_support</exec_depend>
   <exec_depend>hotspray_ur5_moveit_config</exec_depend>
   <exec_depend>roslaunch</exec_depend>
   <exec_depend>rviz</exec_depend>
-  <exec_depend>hotspary_ur5_description</exec_depend>
   <exec_depend>hotspray_ur5_support</exec_depend>
+  <exec_depend>hotspray_ur5_description</exec_depend>
+  
+  
   <exec_depend>velocity_controllers</exec_depend>
   <exec_depend>xacro</exec_depend>
 

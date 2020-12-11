@@ -12,17 +12,21 @@
 
   <!-- Robot  TODO: dirty fix -->
 
-  <group if="$(arg sim_robot)">
+  <!--group if="$(arg sim_robot)">
     <include file="$(find hotspray_ur5_bringup)/launch/ur5_gazebo.launch"/>
+  </group-->
+   <group if="$(arg sim_robot)">
+    <include file="$(find ur_gazebo)/launch/ur5.launch"/>
   </group>
 
   <group unless="$(arg sim_robot)">
     <include file="$(find hotspray_ur5_bringup)/launch/ur5_real.launch">
-      <arg name="robot_ip" value="169.254.60.1"/>
+      <arg name="robot_ip" value="192.168.1.10"/>
     </include>
   </group>
   
-  <rosparam command="load" file="$(find ur5_moveit_config)/config/joint_names.yaml"/>
+  <rosparam command="load" file="$(find ur5_moveit_config)/config/controllers.yaml"/>
+  <!--rosparam command="load" file="$(find hotspray_ur5_moveit_config)/config/joint_names.yaml"/-->
 
   <include file="$(find hotspray_ur5_moveit_config)/launch/move_group.launch">
     <arg name="publish_monitored_planning_scene" value="true" />

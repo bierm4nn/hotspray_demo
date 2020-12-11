@@ -1,73 +1,73 @@
-# Scan and Polish application
-[![Build Status](https://travis-ci.com/rosin-project/automatica18_scan_and_plan_demo.svg?branch=master)](https://travis-ci.com/rosin-project/automatica18_scan_and_plan_demo)
-[![license - apache 2.0](https://img.shields.io/:license-Apache%202.0-yellowgreen.svg)](https://opensource.org/licenses/Apache-2.0)
-
-<a href="https://ipa-jfh.github.io/urdf-animation/application_scan_and_plan/result/">
-    <img src="https://user-images.githubusercontent.com/17281534/46005937-aafba700-c0b6-11e8-9d8f-0148392488f1.gif" width="430" height="250">
-    >> 3D animation
-</a>
+# Scan and Spray application
+This project if forked from <a href="https://github.com/rosin-project/automatica18_scan_and_plan_demo">automatica18_scan_and_plan_demo</a>
 
 ## Application implements
 - `godel` (Scan and Plan): https://github.com/ros-industrial-consortium/godel
-- `ensenso_driver`: https://github.com/ensenso/ros_driver (<a href="http://rosin-project.eu/ftps">
-  <img src="http://rosin-project.eu/wp-content/uploads/rosin_ack_logo_wide.png" 
-       alt="rosin_logo" height="20" >
-</a> [funded](http://rosin-project.eu/ftps))
-- `pilz_robots`: https://github.com/PilzDE/pilz_robots
-- `pilz_industrial_motion`: https://github.com/PilzDE/pilz_industrial_motion (<a href="http://rosin-project.eu/ftps">
-  <img src="http://rosin-project.eu/wp-content/uploads/rosin_ack_logo_wide.png" 
-       alt="rosin_logo" height="20" >
-</a> [funded](http://rosin-project.eu/ftps))
+
 
 ## Installation
 
 ```shell
 
-# Install Ensenso SDK (from https://www.ensenso.com/support/sdk-download) by:
-wget -q https://download.ensenso.com/s/ensensosdk/download?files=ensenso-sdk-2.2.65-x64.deb -O /tmp/ensenso.deb && dpkg -i /tmp/ensenso.deb
-
 # Create a new ROS workspace
-mkdir -p ~/snp_demo_ws/src && cd ~/snp_demo_ws/src
+mkdir -p ~/hotspray_ws/src && cd ~/hotspray_ws/src
 
 # Download demo repository
-git clone https://github.com/rosin-project/automatica18_scan_and_plan_demo.git
+git clone https://github.com/bierm4nn/hotspray_demo.git
 
 # Download dependencies
 wstool init .
-wstool merge ~/snp_demo_ws/src/automatica18_scan_and_plan_demo/snp_prbt.rosinstall
+wstool merge ~/hotspray_ws/hotspray_demo/hotspray_demo.rosinstall
 wstool up
 
 # Reset ROS_PACKAGE_PATH
 source /opt/ros/kinetic/setup.bash
 
 # Install dependencies 
-rosdep update && rosdep install --from-paths ~/snp_demo_ws/src --ignore-src --skip-keys="pilz_modbus pilz_sto_modbus_adapter prbt_pg70_support"
+rosdep update && rosdep install -y --from-paths ~/hotspray_ws/src --ignore-src 
 
 
 # Build workspace
-cd ~/snp_demo_ws && catkin build 
+cd ~/hotspray_ws && catkin build 
 
 # Source workspace
-source ~/snp_demo_ws/devel/setup.bash
+source ~/hotspray_ws/devel/setup.bash
+
+# Install realsense driver
+Add the server to the list of repositories:
+- Ubuntu 16 LTS:
+    sudo add-apt-repository "deb http://realsense-hw-public.s3.amazonaws.com/Debian/apt-repo xenial main" -u
+- Ubuntu 18 LTS:
+    sudo add-apt-repository "deb http://realsense-hw-public.s3.amazonaws.com/Debian/apt-repo bionic main" -u
+
+sudo apt-get install librealsense2-dkms
+sudo apt-get install librealsense2-utils
 
 ```
+
+## Qt Glyph Loading Segfault (Kinetic)
+
+Rviz on Kinetic is prone to a segmentation fault caused by internal functions in the Qt library. Our current work-around is to set the following environment variable:
+
+export QT_NO_FT_CACHE=1
+
+
 
 
 ## Run application
 
 ```shell
 # Simulation:
-roslaunch snp_prbt_bringup application_bringup.launch
+roslaunch hotspray_ur5_bringup application_bringup.launch
 # Info: Make sure to press play in Gazebo
 
 # Real robot:
-roslaunch snp_prbt_bringup application_bringup.launch sim_robot:=false
-# Info: Real robot requires pilz_modbus and pilz_sto_modbus_adapter
+roslaunch hotspray_ur5_bringup application_bringup.launch sim_robot:=false
 
 ```
 
 ## Scan and Plan: Remove local scan_parameter cache
-Make sure to clear possible local `godel_robot_scan_parameters` since they would overwrite the ones of this repo (`snp_prbt_bringup/config/robot_scan.yaml`).
+Make sure to clear possible local `godel_robot_scan_parameters` since they would overwrite the ones of this repo (`hotspray_ur5_bringup/config/robot_scan.yaml`).
 
 ```shell
 rm -f ~/.ros/godel_robot_scan_parameters.msg
@@ -75,22 +75,6 @@ rm -f ~/.ros/godel_robot_scan_parameters.msg
 
 ## Systems settings for real devices
 
-### Camera: uEye Driver
-```
-wget -q https://download.ensenso.com/s/idsdrivers/download?files=uEye_4.90.0_Linux_64.tgz -O /tmp/ueye.tgz
-tar -xvzf /tmp/ueye.tgz  -C /tmp
-sudo /tmp/ueyesdk-setup-4.90-eth-amd64.gz.run
-```
-
-### Robot: CAN interface
-Add in `/etc/network/interfaces` the following config for the [socketcan_interface]( http://wiki.ros.org/socketcan_interface).
-
-```
-allow-hotplug can0
-iface can0 can static
-    bitrate 1000000
-    up ip link set $IFACE txqueuelen 15
-```
 
 
 

@@ -51,7 +51,3 @@ target_link_libraries(spindle_sim
 
 install(TARGETS ur5_hotspray_process_service_node spindle_sim
         RUNTIME DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION})
-
-install(PROGRAMS scripts/ensenso_interface scripts/set_region_of_interest
-        DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
-       )

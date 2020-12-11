@@ -10,7 +10,7 @@ Panels:
         - /TF1/Frames1
         - /PointCloud21
       Splitter Ratio: 0.5
-    Tree Height: 930
+    Tree Height: 344
   - Class: godel_plugins/RobotBlendingPanel
     Name: RobotBlendingPanel
     TextEntry: test_field
@@ -18,6 +18,8 @@ Panels:
     Name: DemoPanel
   - Class: rviz/Selection
     Name: Selection
+Toolbars:
+  toolButtonStyle: 2
 Visualization Manager:
   Class: ""
   Displays:
@@ -81,7 +83,142 @@ Visualization Manager:
       Collision Enabled: false
       Enabled: true
       Links:
-
+        All Links Enabled: true
+        Expand Joint Details: false
+        Expand Link Details: false
+        Expand Tree: false
+        Link Tree Style: Links in Alphabetic Order
+        base:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+        base_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        camera_accel_frame:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+        camera_accel_optical_frame:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+        camera_bottom_screw_frame:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+        camera_color_frame:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+        camera_color_optical_frame:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+        camera_depth_frame:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+        camera_depth_optical_frame:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+        camera_gyro_frame:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+        camera_gyro_optical_frame:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+        camera_infra1_frame:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+        camera_infra1_optical_frame:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+        camera_infra2_frame:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+        camera_infra2_optical_frame:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+        camera_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        ee_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        ensenso_move_frame:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+        forearm_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        hotspray_extruder:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        hotspray_tool_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+        shoulder_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        table:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        tcp_frame:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+        tool0:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+        upper_arm_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        world_frame:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+        wrist_1_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        wrist_2_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        wrist_3_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
       Name: ActualRobot
       Robot Description: robot_description
       TF Prefix: ""
@@ -98,12 +235,137 @@ Visualization Manager:
         Expand Link Details: false
         Expand Tree: false
         Link Tree Style: Links in Alphabetic Order
-        acf_111_04_and_grinder:
+        base:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+        base_link:
           Alpha: 1
           Show Axes: false
           Show Trail: false
           Value: true
-       
+        camera_accel_frame:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+        camera_accel_optical_frame:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+        camera_bottom_screw_frame:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+        camera_color_frame:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+        camera_color_optical_frame:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+        camera_depth_frame:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+        camera_depth_optical_frame:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+        camera_gyro_frame:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+        camera_gyro_optical_frame:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+        camera_infra1_frame:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+        camera_infra1_optical_frame:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+        camera_infra2_frame:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+        camera_infra2_optical_frame:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+        camera_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        ee_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        ensenso_move_frame:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+        forearm_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        hotspray_extruder:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        hotspray_tool_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+        shoulder_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        table:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        tcp_frame:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+        tool0:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+        upper_arm_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        world_frame:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+        wrist_1_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        wrist_2_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        wrist_3_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
       Name: SimulatedRobot
       Robot Description: robot_description
       TF Prefix: simulation
@@ -145,7 +407,7 @@ Visualization Manager:
       Marker Topic: /tool_path_preview
       Name: Tool Path Preview
       Namespaces:
-        blend_paths: true
+        {}
       Queue Size: 100
       Value: true
     - Class: rviz/TF
@@ -260,7 +522,7 @@ Visualization Manager:
   Views:
     Current:
       Class: rviz/Orbit
-      Distance: 1.3849448
+      Distance: 1.94574773
       Enable Stereo Rendering:
         Stereo Eye Separation: 0.0599999987
         Stereo Focal Distance: 1
@@ -275,10 +537,10 @@ Visualization Manager:
       Invert Z Axis: false
       Name: Current View
       Near Clip Distance: 0.00999999978
-      Pitch: 0.889796972
+      Pitch: 0.244797021
       Target Frame: <Fixed Frame>
       Value: Orbit (rviz)
-      Yaw: 6.25971699
+      Yaw: 5.20971537
     Saved: ~
 Window Geometry:
   BlendingPanel:
@@ -287,14 +549,14 @@ Window Geometry:
     collapsed: false
   Displays:
     collapsed: false
-  Height: 1176
+  Height: 2124
   Hide Left Dock: false
   Hide Right Dock: false
-  QMainWindow State: 000000ff00000000fd0000000100000000000001b400000444fc0200000003fc0000003a000004440000023701000019fa000000000100000004fb0000001200440065006d006f00500061006e0065006c0100000000ffffffff0000015000fffffffb000000240052006f0062006f00740042006c0065006e00640069006e006700500061006e0065006c0100000000ffffffff000001b400fffffffb000000100044006900730070006c0061007900730100000000ffffffff0000015600fffffffb0000001a0042006c0065006e00640069006e006700500061006e0065006c0100000000000001ba0000015400fffffffb0000001a0042006c0065006e00640069006e006700500061006e0065006c0000000448000000160000000000000000fb0000001200530065006c0065006300740069006f006e000000033e000000b60000005c00ffffff000005c60000044400000004000000040000000800000008fc0000000100000002000000010000000a0054006f006f006c00730100000000ffffffff0000000000000000
+  QMainWindow State: 000000ff00000000fd0000000100000000000001b4000007f8fc0200000003fc0000003a000007f80000023701000019fa000000000100000004fb0000001200440065006d006f00500061006e0065006c0100000000ffffffff0000007900fffffffb000000240052006f0062006f00740042006c0065006e00640069006e006700500061006e0065006c0100000000ffffffff000001b400fffffffb000000100044006900730070006c0061007900730100000000ffffffff0000015600fffffffb0000001a0042006c0065006e00640069006e006700500061006e0065006c0100000000000001ba0000015400fffffffb0000001a0042006c0065006e00640069006e006700500061006e0065006c0000000448000000160000000000000000fb0000001200530065006c0065006300740069006f006e000000033e000000b60000005c00ffffff000001fe000007f800000004000000040000000800000008fc0000000100000002000000010000000a0054006f006f006c00730100000000ffffffff0000000000000000
   RobotBlendingPanel:
     collapsed: false
   Selection:
     collapsed: false
-  Width: 1920
-  X: 0
-  Y: 24
+  Width: 952
+  X: 1922
+  Y: 4

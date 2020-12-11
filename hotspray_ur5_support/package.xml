@@ -25,8 +25,6 @@
 
   <exec_depend>actionlib</exec_depend>
   <exec_depend>control_msgs</exec_depend>
-  <exec_depend>ensenso_camera</exec_depend>
-  <exec_depend>ensenso_camera_msgs</exec_depend>
   <exec_depend>godel_msgs</exec_depend>
   <exec_depend>industrial_robot_simulator_service</exec_depend>
   <exec_depend>libmodbus-dev</exec_depend>
@@ -34,6 +32,11 @@
   <exec_depend>rospy</exec_depend>
   <exec_depend>std_srvs</exec_depend>
   <exec_depend>trajectory_msgs</exec_depend>
+  <exec_depend>ur_gazebo</exec_depend>
+  <exec_depend>ur5_moveit_config</exec_depend>
+  <exec_depend>ur_msgs</exec_depend>
+  <exec_depend>ur_kinematics</exec_depend>
+ 
 
   <export>
 
