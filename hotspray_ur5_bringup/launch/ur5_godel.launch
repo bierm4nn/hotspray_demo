@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <launch>
   <!-- arguments -->
-  <arg name="sim_robot" default="false"/>
+  <arg name="sim_robot" default="true"/>
   <arg name="robot_name" default="ur5" />
   <arg name="robot_model_plugin" default="descartes_moveit/MoveitStateAdapter"/>
   <arg name="debug_core" default="false"/> <!--Brings up the surface blending service in debug mode-->
@@ -24,7 +24,7 @@
   <group>
     <node name="blend_process_execution" pkg="hotspray_ur5_support" type="ur5_hotspray_process_service_node">
       <remap from="simulate_path" to="simulation/simulate_trajectory"/>
-      <!--remap from="joint_trajectory_action" to="/$(arg robot_name)/manipulator_joint_trajectory_controller/follow_joint_trajectory"/-->
+      <remap from="joint_trajectory_action" to="/arm_controller/follow_joint_trajectory" />
       <param name="spindle_host" value="127.0.0.1" if="$(arg sim_robot)"/>
       <param name="spindle_port" value="1502" if="$(arg sim_robot)"/>
     </node>

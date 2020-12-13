@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <launch>
 
-  <arg name="sim_robot" default="false"/>
+  <arg name="sim_robot" default="true"/>
   <arg name="pipeline" default="command_planner"/>
   <arg name="robot_name" default="ur5"/>
   <arg name="robot_description" value="$(arg robot_name)_description"/>
@@ -10,22 +10,25 @@
   <!-- Load the URDF, SRDF and other .yaml configuration files on the param server -->
   <param name="robot_description" type="str" command="$(find xacro)/xacro --inorder '$(arg urdf_file)' sim:=$(arg sim_robot)"/>
 
-  <!-- Robot  TODO: dirty fix -->
 
-  <!--group if="$(arg sim_robot)">
+  <!-- load simulated robot -->
+  <group if="$(arg sim_robot)">
     <include file="$(find hotspray_ur5_bringup)/launch/ur5_gazebo.launch"/>
-  </group-->
-   <group if="$(arg sim_robot)">
-    <include file="$(find ur_gazebo)/launch/ur5.launch"/>
   </group>
 
+  <!-- load real robot -->
   <group unless="$(arg sim_robot)">
     <include file="$(find hotspray_ur5_bringup)/launch/ur5_real.launch">
       <arg name="robot_ip" value="192.168.1.10"/>
     </include>
   </group>
   
-  <rosparam command="load" file="$(find ur5_moveit_config)/config/controllers.yaml"/>
+
+
+  <!-- Remap follow_joint_trajectory -->
+  <remap if="$(arg sim_robot)" from="/follow_joint_trajectory" to="/arm_controller/follow_joint_trajectory"/>
+
+  <!--rosparam command="load" file="$(find hotspray_ur5_moveit_config)/config/fake_controllers.yaml"/-->
   <!--rosparam command="load" file="$(find hotspray_ur5_moveit_config)/config/joint_names.yaml"/-->
 
   <include file="$(find hotspray_ur5_moveit_config)/launch/move_group.launch">

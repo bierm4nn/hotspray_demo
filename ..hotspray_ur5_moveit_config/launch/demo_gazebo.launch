@@ -6,7 +6,7 @@
   <arg name="db_path" default="$(find hotspray_ur5_moveit_config)/default_warehouse_mongo_db" />
 
   <!-- By default, we are not in debug mode -->
-  <arg name="debug" default="true" />
+  <arg name="debug" default="false" />
 
   <!--
   By default, hide joint_state_publisher's GUI
@@ -20,7 +20,7 @@
 
   <!-- Gazebo specific options -->
   <arg name="gazebo_gui" default="true"/>
-  <arg name="paused" default="true"/>
+  <arg name="paused" default="false"/>
   <!-- By default, use the urdf location provided from the package -->
   <arg name="urdf_path" default="$(find hotspray_ur5_description)/urdf/hotspray_ur5_demo.urdf.xacro"/>
 
@@ -39,12 +39,12 @@
   <!-- If needed, broadcast static tf for robot root -->
   
 
-  <!-- We do not have a robot connected, so publish fake joint states 
+  <!-- We do not have a robot connected, so publish fake joint states -->
   <node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher">
     <param name="use_gui" value="$(arg use_gui)"/>
     <rosparam param="source_list">[/joint_states]</rosparam>
   </node>
--->
+
   <!-- Given the published joint states, publish tf for the robot links -->
   <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" respawn="true" output="screen" />
 

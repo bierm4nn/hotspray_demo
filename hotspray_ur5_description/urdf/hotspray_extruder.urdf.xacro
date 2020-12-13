@@ -21,12 +21,12 @@
           <color rgba="0.8 0.8 0.9 1" />
         </material>
       </visual>
-      <collision>
+      <!--collision>
         <origin xyz="0.04 -0.06 0.06" rpy="${-pi/2} ${-pi/2} ${pi/2}" />
         <geometry>
           <box size="0.195 0.04 0.27"/>
         </geometry>
-      </collision>
+      </collision-->
     </link>
 
     <!--joint between fixture and hotspray-->

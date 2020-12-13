@@ -6,7 +6,8 @@
   <!-- xacro:include filename="$(find ur_description)/urdf/ur5_joint_limited_robot.urdf.xacro"/-->
   <xacro:include filename="$(find hotspray_ur5_description)/urdf/hotspray_tool.urdf.xacro"/>
   <xacro:include filename="$(find hotspray_ur5_description)/urdf/ur5_table.urdf.xacro"/>
-
+    <!-- ur5 -->
+    <xacro:include filename="$(find ur_description)/urdf/ur5.urdf.xacro" />
   <xacro:property name="prefix" value=""/>
   
 
@@ -16,8 +17,7 @@
     <!-- common stuff -->
     <xacro:include filename="$(find ur_description)/urdf/common.gazebo.xacro" />
 
-    <!-- ur5 -->
-    <xacro:include filename="$(find ur_description)/urdf/ur5.urdf.xacro" />
+
 
     <!-- arm -->
     <xacro:ur5_robot prefix="${prefix}" joint_limited="true"
@@ -51,3 +51,4 @@
   </xacro:hotspray_tool>
   
 </robot>
+    

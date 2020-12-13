@@ -18,12 +18,12 @@
 
     <link name="table">
 
-        <collision><!-- bottom -->
+        <!--collision>< bottom >
           <origin rpy="0 0 0" xyz="-0.2 -0.2 0.025"/>
           <geometry>
              <box size="${workspace_x} ${workspace_y} ${wall_width}"/>
           </geometry>
-        </collision>
+        </collision-->
         <visual>
           <origin rpy="0 0 0" xyz="-0.2 -0.2 0.025"/>
           <geometry>

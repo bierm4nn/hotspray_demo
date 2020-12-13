@@ -2,8 +2,6 @@
 
   <include file="$(find hotspray_ur5_moveit_config)/launch/planning_context.launch" />
 
-  <arg name="pipeline" default="command_planner" />
-
   <!-- GDB Debug Option -->
   <arg name="debug" default="false" />
   <arg unless="$(arg debug)" name="launch_prefix" value="" />
@@ -21,15 +19,6 @@
   <arg name="max_safe_path_cost" default="1"/>
   <arg name="jiggle_fraction" default="0.05" />
   <arg name="publish_monitored_planning_scene" default="true"/>
-
-  <!-- load robot models -->
-  <include file="$(find hotspray_ur5_moveit_config)/launch/planning_context.launch"/>
-
-
-  <node pkg="joint_state_publisher" type="joint_state_publisher" name="joint_state_publisher" output="screen">
-    <param name="publish_frequency" type="double" value="30.0" />
-    <rosparam param="/source_list"> [/ur5/joint_states] </rosparam>
-  </node>
 
   <arg name="capabilities" default=""/>
   <arg name="disable_capabilities" default=""/>
@@ -74,14 +63,9 @@
     <param name="allow_trajectory_execution" value="$(arg allow_trajectory_execution)"/>
     <param name="max_safe_path_cost" value="$(arg max_safe_path_cost)"/>
     <param name="jiggle_fraction" value="$(arg jiggle_fraction)" />
-    
-    <param name="capabilities" value="$
-                  "/>
-
-    <!--
-
+    <param name="capabilities" value="$(arg capabilities)"/>
     <param name="disable_capabilities" value="$(arg disable_capabilities)"/>
-    -->
+
 
     <!-- Publish the planning scene of the physical robot so that rviz plugin can know actual robot -->
     <param name="planning_scene_monitor/publish_planning_scene" value="$(arg publish_monitored_planning_scene)" />
